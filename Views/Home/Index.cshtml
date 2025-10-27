@@ -1,0 +1,19 @@
+@{
+    ViewData["Title"] = "Вітальна сторінка";
+}
+<h1>Ласкаво просимо!</h1>
+<p>Демонстраційний ASP.NET Core MVC застосунок з Identity, SQLite та OpenIddict (OAuth2/OpenID Connect).</p>
+<ul>
+    <li>Реєстрація / Вхід / Профіль</li>
+    <li>Три підпрограми з формами вводу/виводу</li>
+    <li>Доступ до підпрограм лише після авторизації</li>
+</ul>
+@if (!User.Identity?.IsAuthenticated ?? true)
+{
+    <a class="btn btn-primary" href="/Account/Register">Зареєструватись</a>
+    <a class="btn btn-outline-primary" href="/Account/Login">Увійти</a>
+}
+else
+{
+    <a class="btn btn-success" href="/Account/Profile">Відкрити профіль</a>
+}

@@ -1,0 +1,26 @@
+@model OAuthMvcSample.Models.BmiInput
+@{
+    ViewData["Title"] = "Підпрограма: ІМТ";
+}
+<h2>ІМТ (Індекс маси тіла)</h2>
+<p>Введіть зріст та вагу. Підпрограма розрахує ІМТ і дасть категорію.</p>
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="WeightKg" class="form-label"></label>
+        <input asp-for="WeightKg" class="form-control" />
+        <span asp-validation-for="WeightKg" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="HeightCm" class="form-label"></label>
+        <input asp-for="HeightCm" class="form-control" />
+        <span asp-validation-for="HeightCm" class="text-danger"></span>
+    </div>
+    <button class="btn btn-primary">Розрахувати</button>
+</form>
+@if (Model.ResultBmi.HasValue)
+{
+    <hr />
+    <p><strong>ІМТ:</strong> @Model.ResultBmi</p>
+    <p><strong>Категорія:</strong> @Model.Category</p>
+}
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

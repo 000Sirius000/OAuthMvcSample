@@ -1,0 +1,34 @@
+@model OAuthMvcSample.Models.TempConvertInput
+@{
+    ViewData["Title"] = "Підпрограма: Температура";
+}
+<h2>Конвертер температур (C ↔ F)</h2>
+<p>Введіть значення і напрям конвертації.</p>
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="Value" class="form-label"></label>
+        <input asp-for="Value" class="form-control" />
+        <span asp-validation-for="Value" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="From" class="form-label"></label>
+        <select asp-for="From" class="form-select">
+            <option value="C">Celsius</option>
+            <option value="F">Fahrenheit</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label asp-for="To" class="form-label"></label>
+        <select asp-for="To" class="form-select">
+            <option value="C">Celsius</option>
+            <option value="F">Fahrenheit</option>
+        </select>
+    </div>
+    <button class="btn btn-primary">Конвертувати</button>
+</form>
+@if (Model.Result.HasValue)
+{
+    <hr />
+    <p><strong>Результат:</strong> @Model.Result</p>
+}
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

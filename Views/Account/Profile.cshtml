@@ -1,0 +1,52 @@
+@model OAuthMvcSample.Models.ProfileViewModel
+@{
+    ViewData["Title"] = "Профіль";
+}
+<h2>Профіль</h2>
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success">@ViewBag.Message</div>
+}
+
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="UserName" class="form-label"></label>
+        <input asp-for="UserName" class="form-control" />
+        <span asp-validation-for="UserName" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="FullName" class="form-label"></label>
+        <input asp-for="FullName" class="form-control" />
+        <span asp-validation-for="FullName" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="PhoneUa" class="form-label"></label>
+        <input asp-for="PhoneUa" class="form-control" />
+        <span asp-validation-for="PhoneUa" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Rfc822Email" class="form-label"></label>
+        <input asp-for="Rfc822Email" class="form-control" />
+        <span asp-validation-for="Rfc822Email" class="text-danger"></span>
+    </div>
+
+    <hr />
+    <h5>Змінити пароль</h5>
+    <div class="mb-3">
+        <label asp-for="CurrentPassword" class="form-label"></label>
+        <input asp-for="CurrentPassword" type="password" class="form-control" />
+        <span asp-validation-for="CurrentPassword" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="NewPassword" class="form-label"></label>
+        <input asp-for="NewPassword" type="password" class="form-control" />
+        <span asp-validation-for="NewPassword" class="text-danger"></span>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Зберегти зміни</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
